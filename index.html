@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>채연이의 첫 생일에 초대합니다</title>
+<title>채연이의 돌잔치에 초대합니다</title>
 <!-- 링크 공유 미리보기 문구: 초대장 만들기에서 자동으로 채웠어요 -->
-<meta name="description" content="채연이의 첫 생일에 초대합니다">
-<meta property="og:title" content="채연이의 첫 생일에 초대합니다">
+<meta name="description" content="채연이의 돌잔치에 초대합니다">
+<meta property="og:title" content="채연이의 돌잔치에 초대합니다">
 <meta property="og:description" content="11월 28일 토요일 오전 11시 · 쿠우쿠우 골드 수원시청점">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -553,7 +553,8 @@ const INVITE = {
   "baby": {
     "name": "채연이",
     "fullName": "박채연",
-    "relation": "딸"
+    "relation": "딸",
+    "birthday": "2025-12-03"
   },
   "parents": {
     "father": "박찬규",
@@ -1039,29 +1040,12 @@ const INVITE = {
     "채연이의 앞날을 축복해 주세요."
   ],
   "notice": [
-    "축하금은 정중히 사양합니다.",
-    "오시는 걸음만으로도 큰 선물이니",
-    "가벼운 마음으로 오셔서 식사만 즐겨 주세요."
+    "축하해 주시는 마음만 감사히 받을게요.",
+    "함께해 주시는 것만으로도",
+    "채연이에게 가장 큰 선물이에요.",
+    "부담 없이 오셔서 맛있는 식사 즐겨 주세요."
   ],
-  "program": [
-    {
-      "time": "11:00",
-      "title": "입장 및 식사"
-    },
-    {
-      "time": "11:40",
-      "title": "성장 영상 상영",
-      "note": "채연이의 1년을 담았어요"
-    },
-    {
-      "time": "12:00",
-      "title": "돌잡이"
-    },
-    {
-      "time": "12:30",
-      "title": "가족 기념 촬영"
-    }
-  ],
+  "program": [],
   "venue": {
     "name": "쿠우쿠우 골드 수원시청점",
     "hall": "",
@@ -1075,7 +1059,7 @@ const INVITE = {
       },
       {
         "label": "주차",
-        "text": "주차 가능 여부는 매장에 문의해 주세요"
+        "text": "지하주차장에 주차할 수 있어요"
       }
     ]
   },
@@ -1176,8 +1160,8 @@ function ddayText() {
   const today = Date.UTC(kst.getUTCFullYear(), kst.getUTCMonth(), kst.getUTCDate());
   const diff = Math.round((Date.UTC(year, month - 1, day) - today) / 864e5);
   const n = esc(INVITE.baby.name);
-  if (diff > 0) return `${n}의 첫 생일까지 <em>D-${diff}</em>`;
-  if (diff === 0) return `<em>오늘</em>은 ${n}의 첫 생일이에요!`;
+  if (diff > 0) return `${n}의 돌잔치까지 <em>D-${diff}</em>`;
+  if (diff === 0) return `<em>오늘</em>은 ${n}의 돌잔치 날이에요!`;
   return `함께 축하해 주셔서 감사했습니다`;
 }
 
@@ -1202,7 +1186,15 @@ function render() {
   const time = fmtTime(hour, minute);
   const v = I.venue;
   const q = encodeURIComponent(v.mapQuery || v.address);
-  document.title = `${I.baby.name}의 첫 생일에 초대합니다`;
+  document.title = `${I.baby.name}의 돌잔치에 초대합니다`;
+  // 생일(baby.birthday)이 있으면 "12월 3일 첫 생일을 앞두고 초대합니다"처럼 보여줘요
+  const bday = /^\d{4}-\d{2}-\d{2}$/.test(I.baby.birthday || '') ? I.baby.birthday.split('-').map(Number) : null;
+  const partyKey = year * 10000 + month * 100 + day;
+  const firstBdayKey = bday ? (bday[0] + 1) * 10000 + bday[1] * 100 + bday[2] : 0;
+  const coverSub = !bday ? '첫 생일을 함께 축하해 주세요'
+    : partyKey < firstBdayKey ? `${bday[1]}월 ${bday[2]}일 첫 생일을 앞두고 초대합니다`
+    : partyKey === firstBdayKey ? '첫 생일 당일, 함께 축하해 주세요'
+    : `${bday[1]}월 ${bday[2]}일 첫 생일을 함께 축하해 주세요`;
 
   const P = I.photos || {};
 
@@ -1232,8 +1224,8 @@ function render() {
       </div>
       <div class="counter" id="counter" hidden>${dayLabel(1)}</div>
       <div class="cover-text wait" id="coverText">
-        <h1>${esc(I.baby.name)}의 첫 생일</h1>
-        <div class="sub">돌잔치에 초대합니다</div>
+        <h1>${esc(I.baby.name)}의 돌잔치</h1>
+        <div class="sub">${esc(coverSub)}</div>
         <div class="when">
           ${year}. ${month}. ${day}. ${dow}요일 ${time}
           <span class="line"></span>
@@ -1264,9 +1256,7 @@ function render() {
         <p class="diary-title">${esc(I.diary.title || '1년간 성장일기')}</p>
         <div class="diary-frame">
           <video id="diaryVideo" muted loop playsinline preload="metadata" aria-label="${esc(I.baby.name)}의 ${esc(I.diary.title || '1년간 성장일기')} 영상"></video>
-        </div>
-        <p class="diary-note">하루 한 장, 0.5초씩 이어 붙였어요</p>
-      </div>` : ''}
+        </div>      </div>` : ''}
       ${I.months?.length ? `
       <div class="months">
         ${I.months.map((m) => `
@@ -1633,7 +1623,7 @@ function downloadICS() {
     `DTEND:${f(end)}`,
     `SUMMARY:${t(`${I.baby.name} 돌잔치`)}`,
     `LOCATION:${t(`${[I.venue.name, I.venue.hall].filter(Boolean).join(' ')}, ${I.venue.address}`)}`,
-    `DESCRIPTION:${t(`${I.baby.fullName}의 첫 생일에 초대합니다.`)}`,
+    `DESCRIPTION:${t(`${I.baby.fullName}의 돌잔치에 초대합니다.`)}`,
     'END:VEVENT', 'END:VCALENDAR',
   ].join('\r\n');
   const url = URL.createObjectURL(new Blob([ics], { type: 'text/calendar;charset=utf-8' }));
@@ -1648,7 +1638,7 @@ function downloadICS() {
 }
 
 async function share() {
-  const data = { title: document.title, text: `${INVITE.baby.name}의 첫 생일에 초대합니다`, url: location.href };
+  const data = { title: document.title, text: `${INVITE.baby.name}의 돌잔치에 초대합니다`, url: location.href };
   if (navigator.share) {
     try { await navigator.share(data); } catch {}
   } else {
