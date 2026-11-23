@@ -1249,7 +1249,7 @@ function render() {
       <p class="message">${I.message.map(esc).join('<br>')}</p>
       <div class="parents">
         아빠 <b>${esc(I.parents.father)}</b><span class="dot">·</span>엄마 <b>${esc(I.parents.mother)}</b><br>
-        의 ${esc(I.baby.relation)} <b>${esc(I.baby.fullName)}</b>
+        ${esc(I.baby.relation)} <b>${esc(I.baby.fullName)}</b>
       </div>
       ${I.notice?.length ? `<p class="notice">${I.notice.map(esc).join('<br>')}</p>` : ''}
     </section>
