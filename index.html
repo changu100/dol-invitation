@@ -1,0 +1,1738 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>채연이의 첫 생일에 초대합니다</title>
+<!-- 링크 공유 미리보기 문구: 초대장 만들기에서 자동으로 채웠어요 -->
+<meta name="description" content="채연이의 첫 생일에 초대합니다">
+<meta property="og:title" content="채연이의 첫 생일에 초대합니다">
+<meta property="og:description" content="11월 28일 토요일 오전 11시 · 쿠우쿠우 골드 수원시청점">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --page: #EDE4D8;
+    --bg: #FBF6EF;
+    --card: #FFFDF9;
+    --ink: #4B403A;
+    --muted: #8E8178;
+    --accent: #DF8B73;
+    --accent-soft: #F8E1D7;
+    --sage: #9FB89B;
+    --sage-soft: #E3EBDF;
+    --sky: #7C97B8;
+    --line: #EDE2D6;
+  }
+  html { color-scheme: light; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--page);
+    color: var(--ink);
+    font-family: 'Gowun Dodum', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    word-break: keep-all;
+  }
+  .serif { font-family: 'Gowun Batang', serif; }
+  .invite {
+    max-width: 440px;
+    margin: 0 auto;
+    background: var(--bg);
+    box-shadow: 0 0 48px rgba(75, 64, 58, .10);
+    overflow: hidden;
+  }
+  section { padding: 72px 28px; text-align: center; position: relative; }
+  section.alt { background: var(--card); }
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: .32em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  h2 {
+    font-family: 'Gowun Batang', serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin: 10px 0 32px;
+  }
+
+  /* ---------- Cover ---------- */
+  .cover {
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 56px 28px 80px;
+    background: radial-gradient(circle at 50% 36%, #fff 0, var(--bg) 62%);
+  }
+  .cover h1 {
+    font-family: 'Gowun Batang', serif;
+    font-size: 34px;
+    font-weight: 700;
+    margin: 0 0 8px;
+  }
+  .cover .sub { color: var(--muted); font-size: 15px; }
+  .cover .when {
+    margin-top: 30px;
+    font-family: 'Gowun Batang', serif;
+    font-size: 16px;
+    line-height: 1.9;
+  }
+  .cover .when .line { display: block; width: 28px; height: 1px; background: var(--accent); margin: 14px auto; }
+  .photo {
+    width: 232px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--accent-soft);
+    border: 8px solid #fff;
+    box-shadow: 0 18px 44px rgba(223, 139, 115, .25);
+    overflow: hidden;
+    margin: 26px auto 30px;
+    display: grid;
+    place-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  .photo img { width: 100%; height: 100%; object-fit: cover; }
+  .photo svg { width: 84%; }
+  .flame { transform-origin: 100px 60px; animation: flicker 1.6s ease-in-out infinite; }
+  @keyframes flicker {
+    0%, 100% { transform: scale(1) rotate(-3deg); }
+    50% { transform: scale(1.08, .92) rotate(3deg); }
+  }
+  .confetti { position: absolute; inset: 0; pointer-events: none; }
+  .confetti span {
+    position: absolute;
+    border-radius: 50%;
+    opacity: .5;
+    animation: drift ease-in-out infinite;
+  }
+  @keyframes drift {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-16px); }
+  }
+  .scroll-hint {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: .2em;
+    animation: bob 2.2s ease-in-out infinite;
+  }
+  @keyframes bob {
+    0%, 100% { transform: translate(-50%, 0); }
+    50% { transform: translate(-50%, 6px); }
+  }
+
+  /* ---------- Greeting ---------- */
+  .message {
+    font-family: 'Gowun Batang', serif;
+    font-size: 16px;
+    line-height: 2.1;
+    margin: 0;
+  }
+  .parents { margin-top: 40px; font-size: 15px; color: var(--muted); line-height: 1.9; }
+  .parents b { color: var(--ink); font-weight: 400; font-family: 'Gowun Batang', serif; font-size: 17px; }
+  .parents .dot { display: inline-block; margin: 0 8px; color: var(--accent); }
+  .notice {
+    max-width: 320px;
+    margin: 36px auto 0;
+    padding: 18px 20px;
+    border: 1px dashed var(--accent);
+    border-radius: 16px;
+    background: #fff;
+    font-size: 14px;
+    line-height: 1.9;
+    color: var(--ink);
+  }
+
+  /* ---------- Calendar ---------- */
+  .date-big { font-family: 'Gowun Batang', serif; font-size: 19px; line-height: 1.7; }
+  .date-big small { display: block; color: var(--muted); font-family: 'Gowun Dodum', sans-serif; font-size: 14px; }
+  .cal {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    row-gap: 4px;
+    max-width: 300px;
+    margin: 28px auto 0;
+    padding: 20px 8px 14px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    font-size: 14px;
+  }
+  .cal .dow { color: var(--muted); font-size: 12px; padding-bottom: 10px; }
+  .cal .day { height: 38px; display: grid; place-items: center; }
+  .cal .sun { color: #D26F58; }
+  .cal .sat { color: var(--sky); }
+  .cal .day.on span {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    display: grid; place-items: center;
+    background: var(--accent);
+    color: #fff;
+    box-shadow: 0 6px 14px rgba(223, 139, 115, .35);
+  }
+  .dday { margin-top: 28px; font-size: 15px; line-height: 1.7; }
+  .dday em { font-style: normal; color: var(--accent); font-family: 'Gowun Batang', serif; font-size: 20px; }
+
+  /* ---------- Buttons ---------- */
+  .btn-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 24px; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 11px 18px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: #fff;
+    color: var(--ink);
+    font: inherit;
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: border-color .2s, color .2s, background .2s;
+  }
+  .btn:hover { border-color: var(--accent); color: var(--accent); }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .btn.primary:hover { background: #D27B62; color: #fff; }
+  .btn.small { padding: 7px 12px; font-size: 13px; }
+  .btn:focus-visible, .icon-btn:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .btn svg { width: 16px; height: 16px; }
+
+  /* ---------- Program ---------- */
+  .program { list-style: none; padding: 0; margin: 0 auto; max-width: 300px; text-align: left; }
+  .program li {
+    display: grid;
+    grid-template-columns: 58px 14px 1fr;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 0;
+    position: relative;
+  }
+  .program time { color: var(--accent); font-family: 'Gowun Batang', serif; font-size: 15px; }
+  .program .pin { width: 10px; height: 10px; border-radius: 50%; background: var(--sage); justify-self: center; position: relative; z-index: 1; box-shadow: 0 0 0 4px var(--sage-soft); }
+  .program li:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: calc(58px + 12px + 7px);
+    top: 50%;
+    height: 100%;
+    border-left: 1px dashed var(--sage);
+  }
+  .program .what { font-size: 15px; }
+  .program .what small { display: block; color: var(--muted); font-size: 12px; margin-top: 2px; }
+
+  /* ---------- Location ---------- */
+  .venue-name { font-family: 'Gowun Batang', serif; font-size: 21px; font-weight: 700; }
+  .venue-hall { color: var(--muted); margin-top: 6px; font-size: 15px; }
+  .address { margin-top: 16px; font-size: 14px; line-height: 1.6; }
+  .address a { color: var(--muted); text-decoration: none; }
+  .guides {
+    max-width: 330px;
+    margin: 30px auto 0;
+    padding: 4px 20px;
+    text-align: left;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+  }
+  .guides div { padding: 14px 0; border-bottom: 1px solid var(--line); }
+  .guides div:last-child { border-bottom: 0; }
+  .guides dt { font-size: 12px; color: var(--accent); margin-bottom: 4px; }
+  .guides dd { margin: 0; font-size: 14px; line-height: 1.6; }
+
+  /* ---------- Contact ---------- */
+  .contacts { display: grid; gap: 10px; max-width: 330px; margin: 0 auto; }
+  .contact {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 16px 14px 20px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    text-align: left;
+  }
+  .contact .role { font-size: 12px; color: var(--muted); }
+  .contact .name { font-family: 'Gowun Batang', serif; font-size: 16px; margin-top: 2px; }
+  .contact .actions { display: flex; gap: 6px; }
+  .icon-btn {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    display: grid; place-items: center;
+    background: var(--accent-soft);
+    color: var(--accent);
+    text-decoration: none;
+    transition: background .2s, color .2s;
+  }
+  .icon-btn:hover { background: var(--accent); color: #fff; }
+  .icon-btn svg { width: 18px; height: 18px; }
+  details.accounts {
+    max-width: 330px;
+    margin: 28px auto 0;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    text-align: left;
+    overflow: hidden;
+  }
+  details.accounts summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 15px;
+  }
+  details.accounts summary::-webkit-details-marker { display: none; }
+  details.accounts summary .chev { transition: transform .25s; color: var(--muted); }
+  details.accounts[open] summary .chev { transform: rotate(180deg); }
+  .acct {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    border-top: 1px solid var(--line);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .acct .who { font-size: 12px; color: var(--muted); }
+
+  /* ---------- Closing ---------- */
+  .closing { padding-bottom: 56px; }
+  .closing p { font-family: 'Gowun Batang', serif; line-height: 2; margin: 0; }
+  .foot { margin-top: 48px; font-size: 11px; letter-spacing: .2em; color: var(--muted); }
+
+  [hidden] { display: none !important; }
+
+  /* ---------- Timelapse (cover) ---------- */
+  .photo.timelapse svg { display: none; }
+  .photo #growth { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+  /* ---------- Cover photo (uploaded, or the latest growth photo) ---------- */
+  .photo.media {
+    width: min(250px, 64vw);
+    aspect-ratio: 9 / 16;
+    border-radius: 30px;
+    background: var(--bg);
+  }
+  .photo.media svg { display: none; }
+  .photo #coverImg {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+
+  /* ---------- 1년간 성장일기 (looping video) ---------- */
+  .diary { margin: 0 auto 36px; }
+  .diary-title {
+    margin: -12px 0 14px;
+    font-family: 'Gowun Batang', serif;
+    font-size: 17px;
+    color: var(--accent);
+  }
+  .diary-frame {
+    position: relative;
+    width: min(260px, 70vw);
+    aspect-ratio: 9 / 16;
+    margin: 0 auto;
+    border: 6px solid #fff;
+    border-radius: 28px;
+    overflow: hidden;
+    background: var(--accent-soft);
+    box-shadow: 0 16px 36px rgba(223, 139, 115, .22);
+  }
+  .diary-frame video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .diary-note { margin-top: 12px; font-size: 12px; color: var(--muted); }
+  .photo .loading {
+    position: absolute; inset: 0;
+    display: grid; place-content: center; gap: 4px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-family: 'Gowun Batang', serif;
+  }
+  .loading span { font-size: 30px; font-variant-numeric: tabular-nums; }
+  .loading small { font-family: 'Gowun Dodum', sans-serif; font-size: 12px; color: var(--muted); }
+  .counter {
+    margin: -48px auto 26px;
+    position: relative; z-index: 2;
+    min-width: 88px;
+    padding: 6px 16px;
+    border-radius: 999px;
+    background: #fff;
+    color: var(--accent);
+    font-family: 'Gowun Batang', serif;
+    font-size: 15px;
+    font-variant-numeric: tabular-nums;
+    box-shadow: 0 6px 16px rgba(223, 139, 115, .22);
+  }
+  .cover-text { transition: opacity 1.4s ease, transform 1.4s ease; }
+  .cover-text.wait { opacity: 0; transform: translateY(10px); }
+  .skip {
+    position: absolute; top: 18px; right: 18px; z-index: 3;
+    background: rgba(255, 255, 255, .8);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 6px 12px;
+    color: var(--muted);
+    font: inherit; font-size: 12px;
+    cursor: pointer;
+  }
+  .skip:hover { color: var(--accent); border-color: var(--accent); }
+
+  /* ---------- Monthly cards ---------- */
+  .months {
+    display: flex; gap: 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    margin: 0 -28px;
+    padding: 4px 28px 16px;
+    scrollbar-width: none;
+  }
+  .months::-webkit-scrollbar { display: none; }
+  .mcard {
+    flex: 0 0 62%;
+    scroll-snap-align: center;
+    margin: 0;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    overflow: hidden;
+    text-align: left;
+  }
+  .mphoto { aspect-ratio: 4 / 5; position: relative; display: grid; place-items: center; background: var(--accent-soft); }
+  .mcard:nth-child(3n+2) .mphoto { background: var(--sage-soft); }
+  .mcard:nth-child(3n) .mphoto { background: #E4EAF2; }
+  .mphoto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .mphoto .mnum { display: none; font-family: 'Gowun Batang', serif; font-size: 60px; color: #fff; }
+  .mphoto.empty img { display: none; }
+  .mphoto.empty .mnum { display: block; }
+  .mcard figcaption { padding: 14px 16px 16px; font-size: 14px; line-height: 1.5; }
+  .mcard figcaption b { display: block; margin-bottom: 2px; color: var(--accent); font-family: 'Gowun Batang', serif; font-weight: 400; font-size: 13px; }
+  .swipe-hint { margin-top: 8px; font-size: 12px; color: var(--muted); }
+
+  /* ---------- Before / After ---------- */
+  .compare {
+    --pos: 50%;
+    position: relative;
+    max-width: 330px;
+    aspect-ratio: 4 / 5;
+    margin: 0 auto;
+    border-radius: 20px;
+    overflow: hidden;
+    background: var(--accent-soft);
+    box-shadow: 0 14px 34px rgba(75, 64, 58, .12);
+  }
+  .compare img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .compare .before { clip-path: inset(0 calc(100% - var(--pos)) 0 0); }
+  .compare .bar { position: absolute; top: 0; bottom: 0; left: var(--pos); width: 2px; margin-left: -1px; background: #fff; pointer-events: none; }
+  .compare .bar::after {
+    content: "‹ ›";
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    display: grid; place-items: center;
+    background: #fff; color: var(--accent);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .15);
+  }
+  .compare .tag { position: absolute; bottom: 12px; padding: 4px 10px; border-radius: 999px; background: rgba(255, 255, 255, .9); font-size: 12px; pointer-events: none; }
+  .compare .tag.l { left: 12px; }
+  .compare .tag.r { right: 12px; }
+  .compare input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; }
+  body:not(.has-photos) .needs-photos { display: none; }
+
+  /* ---------- RSVP ---------- */
+  .note { margin: -14px 0 26px; font-size: 14px; line-height: 1.7; color: var(--muted); }
+  .rsvp { display: grid; gap: 14px; max-width: 330px; margin: 0 auto; text-align: left; }
+  .rsvp > label { display: grid; gap: 6px; font-size: 13px; color: var(--muted); }
+  .rsvp input[type="text"], .rsvp select {
+    font: inherit; font-size: 15px; color: var(--ink);
+    padding: 12px 14px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: #fff;
+  }
+  .rsvp input[type="text"]:focus, .rsvp select:focus { outline: none; border-color: var(--accent); }
+  .rsvp select:disabled { opacity: .5; }
+  .seg { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .seg label { position: relative; }
+  .seg input { position: absolute; opacity: 0; }
+  .seg span {
+    display: block; padding: 12px; text-align: center;
+    border: 1px solid var(--line); border-radius: 12px;
+    background: #fff; font-size: 15px; cursor: pointer;
+  }
+  .seg input:checked + span { border-color: var(--accent); background: var(--accent-soft); color: var(--accent); }
+  .seg input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .rsvp .btn { width: 100%; margin-top: 4px; }
+  .fine { display: block; margin-top: 14px; font-size: 12px; color: var(--muted); }
+
+  /* ---------- Photo wall ---------- */
+  .wall { display: grid; grid-template-columns: repeat(10, 1fr); gap: 2px; border-radius: 12px; overflow: hidden; }
+  .wall.collapsed { max-height: 280px; -webkit-mask-image: linear-gradient(#000 65%, transparent); mask-image: linear-gradient(#000 65%, transparent); }
+  .wall button { display: block; padding: 0; border: 0; aspect-ratio: 1; background: var(--accent-soft); cursor: zoom-in; }
+  .wall img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+  /* ---------- Lightbox ---------- */
+  .lightbox {
+    position: fixed; inset: 0; z-index: 20;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 24px;
+    background: rgba(40, 32, 28, .94);
+  }
+  .lightbox img { max-width: min(92vw, 420px); max-height: 72vh; border-radius: 14px; object-fit: contain; }
+  .lb-cap { margin-top: 14px; color: #fff; font-family: 'Gowun Batang', serif; }
+  .lb-btn {
+    position: absolute;
+    width: 44px; height: 44px;
+    border: 0; border-radius: 50%;
+    background: rgba(255, 255, 255, .14);
+    color: #fff; font-size: 22px; line-height: 1;
+    cursor: pointer;
+  }
+  .lb-btn:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+  .lb-close { top: 16px; right: 16px; }
+  .lb-prev { left: 12px; top: 50%; transform: translateY(-50%); }
+  .lb-next { right: 12px; top: 50%; transform: translateY(-50%); }
+
+  /* ---------- Toast ---------- */
+  .toast {
+    position: fixed;
+    left: 50%;
+    bottom: 32px;
+    transform: translate(-50%, 16px);
+    background: rgba(75, 64, 58, .92);
+    color: #fff;
+    padding: 11px 20px;
+    border-radius: 999px;
+    font-size: 14px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .25s, transform .25s;
+    z-index: 10;
+    white-space: nowrap;
+  }
+  .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+  /* ---------- Reveal ---------- */
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .8s ease, transform .8s ease; }
+  .reveal.on { opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .reveal { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+<main class="invite" id="app"></main>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="lightbox" id="lb" role="dialog" aria-modal="true" aria-label="사진 크게 보기" hidden>
+  <button class="lb-btn lb-close" type="button" data-action="lb-close" aria-label="닫기">×</button>
+  <button class="lb-btn lb-prev" type="button" data-action="lb-prev" aria-label="이전 사진">‹</button>
+  <img id="lbImg" alt="">
+  <div class="lb-cap" id="lbCap"></div>
+  <button class="lb-btn lb-next" type="button" data-action="lb-next" aria-label="다음 사진">›</button>
+</div>
+
+<script>
+/* ============================================================
+   여기만 고치면 됩니다 ✏️
+   ============================================================ */
+const INVITE = {
+  "baby": {
+    "name": "채연이",
+    "fullName": "박채연",
+    "relation": "딸"
+  },
+  "parents": {
+    "father": "박찬규",
+    "mother": "전은재"
+  },
+  "date": {
+    "year": 2026,
+    "month": 11,
+    "day": 28,
+    "hour": 11,
+    "minute": 0
+  },
+  "durationHours": 2,
+  "dateTitle": "늦가을의 어느 좋은 날",
+  "photos": {
+    "dir": "photos",
+    "prefix": "day",
+    "ext": "webp",
+    "pad": 3,
+    "total": 357,
+    "dplus": [
+      0,
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      18,
+      20,
+      21,
+      22,
+      24,
+      24,
+      25,
+      26,
+      27,
+      29,
+      29,
+      30,
+      31,
+      32,
+      32,
+      34,
+      34,
+      35,
+      37,
+      38,
+      39,
+      40,
+      41,
+      41,
+      42,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      63,
+      64,
+      65,
+      66,
+      67,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      96,
+      98,
+      99,
+      100,
+      101,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110,
+      111,
+      111,
+      113,
+      113,
+      115,
+      116,
+      117,
+      118,
+      119,
+      120,
+      121,
+      122,
+      123,
+      124,
+      125,
+      126,
+      127,
+      128,
+      129,
+      130,
+      131,
+      132,
+      133,
+      134,
+      135,
+      136,
+      137,
+      138,
+      139,
+      140,
+      141,
+      142,
+      143,
+      144,
+      145,
+      146,
+      147,
+      148,
+      149,
+      150,
+      151,
+      152,
+      153,
+      154,
+      155,
+      156,
+      157,
+      158,
+      159,
+      160,
+      161,
+      162,
+      163,
+      164,
+      165,
+      166,
+      167,
+      168,
+      169,
+      170,
+      171,
+      172,
+      173,
+      174,
+      175,
+      176,
+      177,
+      178,
+      179,
+      180,
+      181,
+      182,
+      183,
+      184,
+      185,
+      186,
+      187,
+      188,
+      189,
+      190,
+      191,
+      192,
+      193,
+      194,
+      195,
+      197,
+      197,
+      198,
+      199,
+      200,
+      201,
+      202,
+      203,
+      204,
+      205,
+      206,
+      207,
+      208,
+      209,
+      210,
+      211,
+      212,
+      213,
+      214,
+      215,
+      216,
+      217,
+      218,
+      219,
+      220,
+      221,
+      222,
+      223,
+      224,
+      225,
+      226,
+      227,
+      228,
+      229,
+      230,
+      231,
+      232,
+      232,
+      234,
+      235,
+      236,
+      237,
+      238,
+      239,
+      240,
+      241,
+      242,
+      243,
+      244,
+      245,
+      246,
+      247,
+      248,
+      249,
+      250,
+      251,
+      252,
+      253,
+      254,
+      255,
+      256,
+      257,
+      258,
+      259,
+      260,
+      261,
+      262,
+      263,
+      264,
+      265,
+      266,
+      267,
+      268,
+      269,
+      270,
+      271,
+      272,
+      273,
+      274,
+      275,
+      276,
+      277,
+      278,
+      279,
+      280,
+      281,
+      282,
+      283,
+      284,
+      285,
+      286,
+      287,
+      288,
+      289,
+      290,
+      291,
+      292,
+      293,
+      294,
+      295,
+      296,
+      297,
+      298,
+      299,
+      300,
+      301,
+      302,
+      303,
+      304,
+      305,
+      306,
+      307,
+      308,
+      309,
+      310,
+      311,
+      312,
+      313,
+      314,
+      315,
+      316,
+      317,
+      318,
+      319,
+      320,
+      321,
+      322,
+      323,
+      324,
+      325,
+      326,
+      327,
+      328,
+      329,
+      330,
+      331,
+      332,
+      333,
+      334,
+      335,
+      336,
+      337,
+      338,
+      339,
+      340,
+      341,
+      342,
+      343,
+      344,
+      345,
+      346,
+      347,
+      348,
+      349,
+      350,
+      351,
+      352,
+      353,
+      354,
+      355
+    ],
+    "intervalMs": 50,
+    "sample": false,
+    "autoplay": true
+  },
+  "cover": {
+    "image": "images/cover.webp"
+  },
+  "diary": {
+    "title": "1년간 성장일기",
+    "video": "cover-original.mp4"
+  },
+  "compare": {
+    "before": "images/compare-before.webp",
+    "after": "images/compare-after.webp",
+    "beforeLabel": "첫날",
+    "afterLabel": "오늘"
+  },
+  "wall": {
+    "images": []
+  },
+  "months": [
+    {
+      "month": 1,
+      "day": 33,
+      "caption": "첫사진 찍기",
+      "image": "images/month-01.webp"
+    },
+    {
+      "month": 2,
+      "day": 64,
+      "caption": "잠만 쿨쿨쿨",
+      "image": "images/month-02.webp"
+    },
+    {
+      "month": 3,
+      "day": 92,
+      "caption": "무럭무럭 크고있다구요",
+      "image": "images/month-03.webp"
+    },
+    {
+      "month": 4,
+      "day": 123,
+      "caption": "친구들과 함께! 귀여움이 4배!",
+      "image": "images/month-04.webp"
+    },
+    {
+      "month": 5,
+      "day": 153,
+      "caption": "귀여운 곰돌이!",
+      "image": "images/month-05.webp"
+    },
+    {
+      "month": 6,
+      "day": 184,
+      "caption": "저도 딸이라구요!",
+      "image": "images/month-06.webp"
+    },
+    {
+      "month": 7,
+      "day": 214,
+      "caption": "혼자서 앉아요",
+      "image": "images/month-07.webp"
+    },
+    {
+      "month": 8,
+      "day": 245,
+      "caption": "세상이 너무 신기해요",
+      "image": "images/month-08.webp"
+    },
+    {
+      "month": 9,
+      "day": 276,
+      "caption": "으이차!",
+      "image": "images/month-09.webp"
+    },
+    {
+      "month": 10,
+      "day": 306,
+      "caption": "첫 추석!",
+      "image": "images/month-10.webp"
+    },
+    {
+      "month": 11,
+      "day": 337,
+      "caption": "귀여운 달토끼랍니다!",
+      "image": "images/month-11.webp"
+    },
+    {
+      "month": 12,
+      "day": 357,
+      "caption": "축하해주셔서 감사합니다!",
+      "image": "images/month-12.webp"
+    }
+  ],
+  "message": [
+    "작고 여린 손으로 세상을 처음 만난 지",
+    "어느덧 일 년이 되었습니다.",
+    "",
+    "그동안 따뜻한 사랑으로 함께해 주신",
+    "고마운 분들을 모시고",
+    "채연이의 첫 생일을 축하하는 자리를 마련했습니다.",
+    "",
+    "오셔서 따뜻한 식사 한 끼 함께하며",
+    "채연이의 앞날을 축복해 주세요."
+  ],
+  "notice": [
+    "축하금은 정중히 사양합니다.",
+    "오시는 걸음만으로도 큰 선물이니",
+    "가벼운 마음으로 오셔서 식사만 즐겨 주세요."
+  ],
+  "program": [
+    {
+      "time": "11:00",
+      "title": "입장 및 식사"
+    },
+    {
+      "time": "11:40",
+      "title": "성장 영상 상영",
+      "note": "채연이의 1년을 담았어요"
+    },
+    {
+      "time": "12:00",
+      "title": "돌잡이"
+    },
+    {
+      "time": "12:30",
+      "title": "가족 기념 촬영"
+    }
+  ],
+  "venue": {
+    "name": "쿠우쿠우 골드 수원시청점",
+    "hall": "",
+    "address": "경기 수원시 권선구 권광로139번길 11",
+    "mapQuery": "쿠우쿠우 골드 수원시청점",
+    "tel": "",
+    "guides": [
+      {
+        "label": "지하철",
+        "text": "수인분당선 수원시청역 인근"
+      },
+      {
+        "label": "주차",
+        "text": "주차 가능 여부는 매장에 문의해 주세요"
+      }
+    ]
+  },
+  "contacts": [],
+  "accounts": [],
+  "rsvp": {
+    "to": ""
+  },
+  "closing": [
+    "바쁘신 와중에도 채연이를 위해",
+    "시간 내어 주셔서 진심으로 감사드립니다."
+  ]
+};
+/* ============================================================ */
+
+const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const DOW = ['일', '월', '화', '수', '목', '금', '토'];
+const digits = (t) => String(t).replace(/[^0-9+]/g, '');
+// 미리보기용 샘플 그림: 날짜가 지날수록 얼굴이 커지고 머리카락이 자라요
+function sampleSvg(n) {
+  const t = (n - 1) / 364;
+  const hue = Math.round(18 + t * 150);
+  const r = Math.round(62 + t * 46);
+  const cy = 250;
+  const eyeY = cy - r * 0.08, eyeX = r * 0.36;
+  const hair = Math.round(4 + t * 22);
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="400" height="500">
+    <rect width="400" height="500" fill="hsl(${hue},55%,90%)"/>
+    <circle cx="200" cy="${cy}" r="${r + 26}" fill="hsl(${hue},60%,94%)"/>
+    <path d="M${200 - r * 0.5} ${cy - r * 0.86} Q200 ${cy - r - hair * 2} ${200 + r * 0.5} ${cy - r * 0.86}" fill="#6B5446"/>
+    <circle cx="200" cy="${cy}" r="${r}" fill="#FCE3D3"/>
+    <path d="M200 ${cy - r + 2} q-${hair * 0.6} -${hair} ${hair * 0.4} -${hair * 1.4}" stroke="#6B5446" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <circle cx="${200 - eyeX}" cy="${eyeY}" r="${5 + t * 2}" fill="#4B403A"/>
+    <circle cx="${200 + eyeX}" cy="${eyeY}" r="${5 + t * 2}" fill="#4B403A"/>
+    <ellipse cx="${200 - r * 0.55}" cy="${cy + r * 0.22}" rx="${r * 0.16}" ry="${r * 0.1}" fill="#F4A9A0" opacity=".6"/>
+    <ellipse cx="${200 + r * 0.55}" cy="${cy + r * 0.22}" rx="${r * 0.16}" ry="${r * 0.1}" fill="#F4A9A0" opacity=".6"/>
+    <path d="M${200 - r * 0.2} ${cy + r * 0.28} Q200 ${cy + r * (0.42 + t * 0.12)} ${200 + r * 0.2} ${cy + r * 0.28}" stroke="#C9776A" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <text x="200" y="460" text-anchor="middle" font-family="sans-serif" font-size="22" fill="hsl(${hue},30%,45%)">SAMPLE · Day ${n}</text>
+  </svg>`;
+  return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+}
+
+// n번째 사진의 D+ 표시 (dplus 가 있으면 촬영 날짜 기준, 없으면 사진 번호)
+const dayLabel = (n) => {
+  const L = INVITE.photos?.dplus;
+  return `D+${Array.isArray(L) && L[n - 1] != null ? L[n - 1] : n}`;
+};
+
+const photoSrc = (n) => {
+  const P = INVITE.photos || {};
+  if (P.sample) return sampleSvg(n);
+  return `${P.dir}/${P.prefix}${String(n).padStart(P.pad || 3, '0')}.${P.ext}`;
+};
+
+const ICON = {
+  phone: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>',
+  sms: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.8 7L3 21l2-6.2A8 8 0 1 1 21 12z"/></svg>',
+  cal: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>',
+  share: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>',
+  chev: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>',
+};
+
+const CAKE_SVG = `
+<svg viewBox="0 0 200 200" role="img" aria-label="촛불 하나가 꽂힌 생일 케이크">
+  <ellipse cx="100" cy="160" rx="72" ry="11" fill="#fff"/>
+  <rect x="48" y="96" width="104" height="62" rx="12" fill="#FFF7EE"/>
+  <path d="M48 108 q0-12 12-12 h80 q12 0 12 12 v6 q-6 8-13 0 q-7 10-14 0 q-7 10-14 0 q-7 10-14 0 q-7 10-14 0 q-7 10-14 0 q-7 10-14 0 q-4 8-7 0 z" fill="#DF8B73"/>
+  <circle cx="68" cy="136" r="4" fill="#9FB89B"/>
+  <circle cx="88" cy="142" r="4" fill="#F2C46D"/>
+  <circle cx="110" cy="136" r="4" fill="#9FB89B"/>
+  <circle cx="132" cy="142" r="4" fill="#F2C46D"/>
+  <rect x="95" y="62" width="10" height="36" rx="4" fill="#9FB89B"/>
+  <path d="M95 72 l10 -6 M95 82 l10 -6 M95 92 l10 -6" stroke="#fff" stroke-width="2.4" stroke-linecap="round" opacity=".8"/>
+  <g class="flame">
+    <path d="M100 38 C108 48 108 56 100 60 C92 56 92 48 100 38 Z" fill="#F2B45A"/>
+    <path d="M100 47 C104 52 104 56 100 58 C96 56 96 52 100 47 Z" fill="#FFE7B0"/>
+  </g>
+  <path d="M40 60 l3 6 6 1-4.5 4 1 6-5.5-3-5.5 3 1-6-4.5-4 6-1z" fill="#F2C46D" opacity=".85"/>
+  <path d="M160 46 c-3-5-10-2-8 3 l8 8 8-8 c2-5-5-8-8-3z" fill="#DF8B73" opacity=".7"/>
+  <circle cx="150" cy="78" r="3" fill="#9FB89B"/>
+  <circle cx="52" cy="84" r="2.5" fill="#DF8B73"/>
+</svg>`;
+
+function fmtTime(h, m) {
+  const ap = h < 12 ? '오전' : '오후';
+  const hh = h % 12 === 0 ? 12 : h % 12;
+  return `${ap} ${hh}시${m ? ` ${m}분` : ''}`;
+}
+
+function eventStart() {
+  const { year, month, day, hour, minute } = INVITE.date;
+  return new Date(Date.UTC(year, month - 1, day, hour - 9, minute)); // KST → UTC
+}
+
+function ddayText() {
+  const { year, month, day } = INVITE.date;
+  const kst = new Date(Date.now() + 9 * 3600e3);
+  const today = Date.UTC(kst.getUTCFullYear(), kst.getUTCMonth(), kst.getUTCDate());
+  const diff = Math.round((Date.UTC(year, month - 1, day) - today) / 864e5);
+  const n = esc(INVITE.baby.name);
+  if (diff > 0) return `${n}의 첫 생일까지 <em>D-${diff}</em>`;
+  if (diff === 0) return `<em>오늘</em>은 ${n}의 첫 생일이에요!`;
+  return `함께 축하해 주셔서 감사했습니다`;
+}
+
+function calendarHTML() {
+  const { year, month, day } = INVITE.date;
+  const first = new Date(Date.UTC(year, month - 1, 1)).getUTCDay();
+  const days = new Date(Date.UTC(year, month, 0)).getUTCDate();
+  let html = DOW.map((d, i) => `<div class="dow ${i === 0 ? 'sun' : i === 6 ? 'sat' : ''}">${d}</div>`).join('');
+  for (let i = 0; i < first; i++) html += '<div class="day"></div>';
+  for (let d = 1; d <= days; d++) {
+    const w = (first + d - 1) % 7;
+    const cls = ['day', w === 0 ? 'sun' : w === 6 ? 'sat' : '', d === day ? 'on' : ''].join(' ');
+    html += `<div class="${cls}"${d === day ? ' aria-current="date"' : ''}><span>${d}</span></div>`;
+  }
+  return html;
+}
+
+function render() {
+  const I = INVITE;
+  const { year, month, day, hour, minute } = I.date;
+  const dow = DOW[new Date(Date.UTC(year, month - 1, day)).getUTCDay()];
+  const time = fmtTime(hour, minute);
+  const v = I.venue;
+  const q = encodeURIComponent(v.mapQuery || v.address);
+  document.title = `${I.baby.name}의 첫 생일에 초대합니다`;
+
+  const P = I.photos || {};
+
+  const confetti = Array.from({ length: 16 }, (_, i) => {
+    const colors = ['#DF8B73', '#9FB89B', '#F2C46D', '#7C97B8'];
+    const size = 5 + (i * 7) % 9;
+    const left = (i * 37 + 7) % 96;
+    const top = (i * 53 + 11) % 92;
+    return `<span style="left:${left}%;top:${top}%;width:${size}px;height:${size}px;background:${colors[i % 4]};animation-duration:${4 + (i % 5)}s;animation-delay:-${i % 4}s"></span>`;
+  }).join('');
+
+  // 직접 올린 사진이 있으면 그걸 쓰고, 없으면 photos 폴더 사진을 써요
+  const CMP = I.compare || {};
+  const cmpBeforeLabel = CMP.before ? (CMP.beforeLabel || '처음') : dayLabel(1);
+  const cmpAfterLabel = CMP.after ? (CMP.afterLabel || '지금') : dayLabel(P.total);
+  const WALL = I.wall?.images || [];
+
+  document.getElementById('app').innerHTML = `
+    <section class="cover">
+      <div class="confetti" aria-hidden="true">${confetti}</div>
+      <div class="eyebrow">Our First Birthday</div>
+      <div class="photo" id="frame">
+        ${CAKE_SVG}
+        <img id="growth" alt="${esc(I.baby.name)}의 1년 성장 사진" hidden>
+        <img id="coverImg" alt="${esc(I.baby.name)} 사진" hidden>
+        <div class="loading" id="loading" hidden><span id="loadPct">0%</span><small>1년을 불러오는 중</small></div>
+      </div>
+      <div class="counter" id="counter" hidden>${dayLabel(1)}</div>
+      <div class="cover-text wait" id="coverText">
+        <h1>${esc(I.baby.name)}의 첫 생일</h1>
+        <div class="sub">돌잔치에 초대합니다</div>
+        <div class="when">
+          ${year}. ${month}. ${day}. ${dow}요일 ${time}
+          <span class="line"></span>
+          ${esc(v.name)} ${esc(v.hall)}
+        </div>
+      </div>
+      <button class="skip" id="skipBtn" type="button" data-action="timelapse" hidden>건너뛰기</button>
+      <div class="scroll-hint" aria-hidden="true">SCROLL ↓</div>
+    </section>
+
+    <section class="alt reveal">
+      <div class="eyebrow">Invitation</div>
+      <h2>소중한 분들을 초대합니다</h2>
+      <p class="message">${I.message.map(esc).join('<br>')}</p>
+      <div class="parents">
+        아빠 <b>${esc(I.parents.father)}</b><span class="dot">·</span>엄마 <b>${esc(I.parents.mother)}</b><br>
+        의 ${esc(I.baby.relation)} <b>${esc(I.baby.fullName)}</b>
+      </div>
+      ${I.notice?.length ? `<p class="notice">${I.notice.map(esc).join('<br>')}</p>` : ''}
+    </section>
+
+    ${I.months?.length || I.diary?.video ? `
+    <section class="reveal">
+      <div class="eyebrow">Growing Up</div>
+      <h2>1년 동안 이렇게 자랐어요</h2>
+      ${I.diary?.video ? `
+      <div class="diary" id="diary">
+        <p class="diary-title">${esc(I.diary.title || '1년간 성장일기')}</p>
+        <div class="diary-frame">
+          <video id="diaryVideo" muted loop playsinline preload="metadata" aria-label="${esc(I.baby.name)}의 ${esc(I.diary.title || '1년간 성장일기')} 영상"></video>
+        </div>
+        <p class="diary-note">하루 한 장, 0.5초씩 이어 붙였어요</p>
+      </div>` : ''}
+      ${I.months?.length ? `
+      <div class="months">
+        ${I.months.map((m) => `
+          <figure class="mcard">
+            <div class="mphoto">
+              <img src="${esc(m.image || photoSrc(m.day))}" alt="${m.month}개월 ${esc(I.baby.name)}" onerror="this.parentNode.classList.add('empty')">
+              <span class="mnum" aria-hidden="true">${m.month}</span>
+            </div>
+            <figcaption><b>${m.month}개월</b>${esc(m.caption)}</figcaption>
+          </figure>`).join('')}
+      </div>
+      <div class="swipe-hint">옆으로 넘겨 보세요 →</div>` : ''}
+    </section>` : ''}
+
+    <section class="alt ${CMP.before && CMP.after ? '' : 'needs-photos'} reveal">
+      <div class="eyebrow">Before &amp; After</div>
+      <h2>첫날과 오늘</h2>
+      <div class="compare">
+        <img class="after" src="${esc(CMP.after || photoSrc(P.total))}" alt="${esc(cmpAfterLabel)} 사진">
+        <img class="before" src="${esc(CMP.before || photoSrc(1))}" alt="${esc(cmpBeforeLabel)} 사진">
+        <span class="tag l">${esc(cmpBeforeLabel)}</span><span class="tag r">${esc(cmpAfterLabel)}</span>
+        <span class="bar" aria-hidden="true"></span>
+        <input type="range" min="0" max="100" value="50" aria-label="첫날과 오늘 사진 비교">
+      </div>
+      <div class="swipe-hint">손잡이를 좌우로 움직여 보세요</div>
+    </section>
+
+    <section class="reveal">
+      <div class="eyebrow">When</div>
+      <h2>${esc(I.dateTitle || `${month}월의 어느 좋은 날`)}</h2>
+      <div class="date-big">
+        ${year}년 ${month}월 ${day}일 ${dow}요일
+        <small>${time}</small>
+      </div>
+      <div class="cal">${calendarHTML()}</div>
+      <div class="dday">${ddayText()}</div>
+      <div class="btn-row">
+        <button class="btn" type="button" data-action="ics">${ICON.cal}캘린더에 추가</button>
+      </div>
+    </section>
+
+    ${I.program?.length ? `
+    <section class="alt reveal">
+      <div class="eyebrow">Program</div>
+      <h2>이렇게 진행돼요</h2>
+      <ol class="program">
+        ${I.program.map((p) => `
+          <li>
+            <time>${esc(p.time)}</time>
+            <span class="pin" aria-hidden="true"></span>
+            <span class="what">${esc(p.title)}${p.note ? `<small>${esc(p.note)}</small>` : ''}</span>
+          </li>`).join('')}
+      </ol>
+    </section>` : ''}
+
+    <section class="reveal">
+      <div class="eyebrow">Location</div>
+      <h2>오시는 길</h2>
+      <div class="venue-name">${esc(v.name)}</div>
+      ${v.hall ? `<div class="venue-hall">${esc(v.hall)}</div>` : ''}
+      <div class="address">
+        ${esc(v.address)}
+        ${v.tel ? `<br><a href="tel:${digits(v.tel)}">Tel. ${esc(v.tel)}</a>` : ''}
+      </div>
+      <div class="btn-row">
+        <a class="btn primary" href="https://map.naver.com/p/search/${q}" target="_blank" rel="noopener" data-action="naver-map">네이버 지도로 보기</a>
+        <button class="btn" type="button" data-copy="${esc(v.address)}" data-msg="주소를 복사했어요">주소 복사</button>
+      </div>
+      ${v.guides?.length ? `
+      <dl class="guides">
+        ${v.guides.map((g) => `<div><dt>${esc(g.label)}</dt><dd>${esc(g.text)}</dd></div>`).join('')}
+      </dl>` : ''}
+    </section>
+
+    ${I.contacts?.length || I.accounts?.length ? `
+    <section class="alt reveal">
+      <div class="eyebrow">Contact</div>
+      <h2>연락하기</h2>
+      <div class="contacts">
+        ${(I.contacts || []).map((c) => `
+          <div class="contact">
+            <div>
+              <div class="role">${esc(I.baby.name)} ${esc(c.role)}</div>
+              <div class="name">${esc(c.name)}</div>
+            </div>
+            <div class="actions">
+              <a class="icon-btn" href="tel:${digits(c.tel)}" aria-label="${esc(c.role)}에게 전화">${ICON.phone}</a>
+              <a class="icon-btn" href="sms:${digits(c.tel)}" aria-label="${esc(c.role)}에게 문자">${ICON.sms}</a>
+            </div>
+          </div>`).join('')}
+      </div>
+      ${I.accounts?.length ? `
+      <details class="accounts">
+        <summary>마음 전하실 곳 <span class="chev">${ICON.chev}</span></summary>
+        ${I.accounts.map((a) => `
+          <div class="acct">
+            <div>
+              <div class="who">${esc(a.role)} · ${esc(a.holder)}</div>
+              ${esc(a.bank)} ${esc(a.number)}
+            </div>
+            <button class="btn small" type="button" data-copy="${esc(`${a.bank} ${a.number}`)}" data-msg="계좌번호를 복사했어요">복사</button>
+          </div>`).join('')}
+      </details>` : ''}
+    </section>` : ''}
+
+    ${I.rsvp?.to ? `
+    <section class="reveal">
+      <div class="eyebrow">RSVP</div>
+      <h2>참석 여부를 알려주세요</h2>
+      <p class="note">식사 준비를 위해 미리 알려주시면<br>큰 도움이 돼요.</p>
+      <form class="rsvp" id="rsvpForm">
+        <label>성함<input type="text" name="name" required autocomplete="name" placeholder="성함을 적어 주세요"></label>
+        <div class="seg" role="radiogroup" aria-label="참석 여부">
+          <label><input type="radio" name="attend" value="참석" checked><span>참석할게요</span></label>
+          <label><input type="radio" name="attend" value="불참"><span>마음만 보낼게요</span></label>
+        </div>
+        <label>함께 오시는 인원 (본인 포함)
+          <select name="count">${[1, 2, 3, 4, 5, 6].map((n) => `<option value="${n}">${n}명</option>`).join('')}</select>
+        </label>
+        <button class="btn primary" type="submit">문자로 알리기</button>
+      </form>
+      <small class="fine">버튼을 누르면 문자 앱이 열려요. 내용을 확인하고 보내 주세요.</small>
+    </section>` : ''}
+
+    <section class="alt ${WALL.length ? '' : 'needs-photos'} reveal">
+      <div class="eyebrow">${WALL.length ? 'Our Album' : '365 Days'}</div>
+      <h2>${esc(I.baby.name)}의 ${WALL.length ? '1년' : '365일'}</h2>
+      <div class="wall collapsed" id="wall"></div>
+      <div class="btn-row">
+        <button class="btn" type="button" data-action="wall">전체 펼쳐 보기</button>
+      </div>
+    </section>
+
+    <section class="closing reveal">
+      <p>${I.closing.map(esc).join('<br>')}</p>
+      <div class="btn-row" style="margin-top:32px">
+        <button class="btn primary" type="button" data-action="share">${ICON.share}초대장 공유하기</button>
+      </div>
+      <div class="foot">${esc(I.baby.fullName.toUpperCase())} · ${year}</div>
+    </section>
+  `;
+}
+
+/* ---------- Photos: timelapse, wall, lightbox ---------- */
+const $ = (id) => document.getElementById(id);
+const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+let frames = [];      // [{ n, src }] 실제로 불러온 사진만
+let playTimer = null;
+let lbIndex = 0;
+
+function loadImage(src) {
+  return new Promise((resolve) => {
+    const im = new Image();
+    im.onload = () => resolve(im);
+    im.onerror = () => resolve(null);
+    im.src = src;
+  });
+}
+
+// 표지: 올린 첫 사진(cover.image)을 보여주고, 없으면 성장 사진 중 가장 최근 사진을 보여줘요.
+// cover.timelapse 를 true 로 두면 예전처럼 사진 타임랩스가 돌아요. 사진이 하나도 없으면 케이크 그림이에요.
+const coverMode = () => {
+  const C = INVITE.cover || {};
+  return C.image ? 'image' : C.timelapse ? 'timelapse' : 'still';
+};
+
+function initCover() {
+  const C = INVITE.cover || {};
+  const mode = coverMode();
+  if (mode === 'timelapse') return;
+  const frame = $('frame');
+  const img = $('coverImg');
+  $('coverText').classList.remove('wait');
+  const src = C.image || (INVITE.photos?.total ? photoSrc(INVITE.photos.total) : '');
+  if (!src) return;  // 케이크 그림 그대로
+  frame.classList.add('media');
+  img.addEventListener('error', () => {  // 사진이 없으면 케이크 그림으로
+    img.hidden = true;
+    frame.classList.remove('media');
+  }, { once: true });
+  // 사진 비율대로 액자 모양을 맞춰요 (너무 넓거나 길쭉하면 4:5 ~ 9:16 사이로)
+  img.addEventListener('load', () => {
+    const r = Math.min(4 / 5, Math.max(9 / 16, img.naturalWidth / img.naturalHeight));
+    frame.style.aspectRatio = String(r);
+  }, { once: true });
+  img.src = src;
+  img.hidden = false;
+}
+
+// 1년간 성장일기: 화면에 보일 때만 재생하고, 벗어나면 멈춰서 데이터를 아껴요.
+function initDiary() {
+  const video = $('diaryVideo');
+  if (!video) return;
+  video.addEventListener('error', () => { $('diary').hidden = true; }, { once: true });
+  video.src = INVITE.diary.video;
+  const play = () => video.play().catch(() => {});
+  // 저전력 모드 등으로 자동재생이 막히면 눌러서 재생
+  video.addEventListener('click', () => (video.paused ? play() : video.pause()));
+  if (reduceMotion) return;  // 움직임 줄이기 설정이면 눌렀을 때만 재생
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(([en]) => (en.isIntersecting ? play() : video.pause()), { threshold: 0.3 }).observe(video);
+  } else {
+    play();
+  }
+}
+
+async function initPhotos() {
+  const P = INVITE.photos;
+  const ok = P?.total && (await loadImage(photoSrc(1)));
+  if (!ok) {
+    $('coverText').classList.remove('wait');
+    return;
+  }
+  document.body.classList.add('has-photos');
+
+  // 표지가 영상/사진이면 357장을 미리 받을 필요 없이 포토월만 만들어요 (필요할 때 불러옴)
+  if (coverMode() !== 'timelapse') {
+    if (!hasUploadedWall) {
+      wallFrames = Array.from({ length: P.total }, (_, k) => ({ src: photoSrc(k + 1), label: dayLabel(k + 1) }));
+      buildWall();
+    }
+    return;
+  }
+
+  $('frame').classList.add('timelapse');
+  $('loading').hidden = false;
+
+  let done = 0;
+  const results = await Promise.all(
+    Array.from({ length: P.total }, (_, k) =>
+      loadImage(photoSrc(k + 1)).then((im) => {
+        done++;
+        $('loadPct').textContent = `${Math.floor((done / P.total) * 100)}%`;
+        return im && { n: k + 1, src: im.src };
+      })
+    )
+  );
+  frames = results.filter(Boolean);
+
+  $('loading').hidden = true;
+  $('growth').hidden = false;
+  $('counter').hidden = false;
+  $('skipBtn').hidden = false;
+  if (!hasUploadedWall) {
+    wallFrames = frames.map((f) => ({ src: f.src, label: dayLabel(f.n) }));
+    buildWall();
+  }
+  if (reduceMotion || P.autoplay === false) finishTimelapse(); else playTimelapse();
+}
+
+function showFrame(f) {
+  $('growth').src = f.src;
+  $('counter').textContent = dayLabel(f.n);
+}
+
+function playTimelapse() {
+  clearTimeout(playTimer);
+  $('coverText').classList.add('wait');
+  const btn = $('skipBtn');
+  btn.textContent = '건너뛰기';
+  btn.dataset.mode = 'skip';
+  let i = 0;
+  const step = () => {
+    showFrame(frames[i]);
+    if (++i < frames.length) playTimer = setTimeout(step, INVITE.photos.intervalMs || 50);
+    else finishTimelapse();
+  };
+  step();
+}
+
+function finishTimelapse() {
+  clearTimeout(playTimer);
+  showFrame(frames[frames.length - 1]);
+  $('coverText').classList.remove('wait');
+  const btn = $('skipBtn');
+  btn.textContent = '↻ 다시 보기';
+  btn.dataset.mode = 'replay';
+}
+
+// 포토월: 직접 올린 사진(wall.images)이 있으면 그걸, 없으면 photos 폴더 사진을 깔아요
+let wallFrames = [];      // [{ src, label }]
+let hasUploadedWall = false;
+
+function initUploadedWall() {
+  const imgs = INVITE.wall?.images || [];
+  if (!imgs.length) return false;
+  wallFrames = imgs.map((src, i) => ({ src, label: `${i + 1} / ${imgs.length}` }));
+  buildWall();
+  return true;
+}
+
+function buildWall() {
+  $('wall').innerHTML = wallFrames.map((f, i) =>
+    `<button type="button" data-lb="${i}" aria-label="${esc(f.label)} 사진 크게 보기"><img src="${esc(f.src)}" alt="" loading="lazy"></button>`
+  ).join('');
+}
+
+function openLightbox(i) {
+  lbIndex = (i + wallFrames.length) % wallFrames.length;
+  const f = wallFrames[lbIndex];
+  $('lbImg').src = f.src;
+  $('lbCap').textContent = f.label;
+  if ($('lb').hidden) {
+    $('lb').hidden = false;
+    document.body.style.overflow = 'hidden';
+    $('lb').querySelector('.lb-close').focus();
+  }
+}
+
+function closeLightbox() {
+  $('lb').hidden = true;
+  document.body.style.overflow = '';
+}
+
+/* ---------- Naver Map deep link ---------- */
+const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+// 휴대폰: 네이버 지도 앱을 열고, 앱이 없으면 1.5초 뒤 웹 지도로 이동
+function openNaverMap(webUrl) {
+  const q = encodeURIComponent(INVITE.venue.mapQuery || INVITE.venue.address);
+  const appUrl = `nmap://search?query=${q}&appname=${encodeURIComponent(location.hostname || 'dol-invitation')}`;
+  const fallback = setTimeout(() => { if (!document.hidden) location.href = webUrl; }, 1500);
+  document.addEventListener('visibilitychange', () => { if (document.hidden) clearTimeout(fallback); }, { once: true });
+  location.href = appUrl;
+}
+
+/* ---------- Actions ---------- */
+let toastTimer;
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 1800);
+}
+
+async function copy(text, msg) {
+  try {
+    await navigator.clipboard.writeText(text);
+  } catch {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.cssText = 'position:fixed;opacity:0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); } catch {}
+    ta.remove();
+  }
+  toast(msg);
+}
+
+function downloadICS() {
+  const I = INVITE;
+  const start = eventStart();
+  const end = new Date(start.getTime() + I.durationHours * 3600e3);
+  const f = (d) => d.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+  const t = (s) => String(s).replace(/([,;\\])/g, '\\$1');
+  const ics = [
+    'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//first-birthday-invite//KO', 'CALSCALE:GREGORIAN',
+    'BEGIN:VEVENT',
+    `UID:${f(start)}-${encodeURIComponent(I.baby.fullName)}@first-birthday`,
+    `DTSTAMP:${f(new Date())}`,
+    `DTSTART:${f(start)}`,
+    `DTEND:${f(end)}`,
+    `SUMMARY:${t(`${I.baby.name} 돌잔치`)}`,
+    `LOCATION:${t(`${[I.venue.name, I.venue.hall].filter(Boolean).join(' ')}, ${I.venue.address}`)}`,
+    `DESCRIPTION:${t(`${I.baby.fullName}의 첫 생일에 초대합니다.`)}`,
+    'END:VEVENT', 'END:VCALENDAR',
+  ].join('\r\n');
+  const url = URL.createObjectURL(new Blob([ics], { type: 'text/calendar;charset=utf-8' }));
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'first-birthday.ics';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  toast('캘린더 파일을 받았어요');
+}
+
+async function share() {
+  const data = { title: document.title, text: `${INVITE.baby.name}의 첫 생일에 초대합니다`, url: location.href };
+  if (navigator.share) {
+    try { await navigator.share(data); } catch {}
+  } else {
+    copy(location.href, '초대장 링크를 복사했어요');
+  }
+}
+
+document.addEventListener('click', (e) => {
+  if (e.target.id === 'lb') return closeLightbox();
+  const el = e.target.closest('[data-copy], [data-action], [data-lb]');
+  if (!el) return;
+  const a = el.dataset.action;
+  if (el.dataset.copy) copy(el.dataset.copy, el.dataset.msg || '복사했어요');
+  else if (el.dataset.lb) openLightbox(Number(el.dataset.lb));
+  else if (a === 'naver-map') {
+    if (isMobile) { e.preventDefault(); openNaverMap(el.href); }   // PC는 링크 그대로 새 탭
+  }
+  else if (a === 'ics') downloadICS();
+  else if (a === 'share') share();
+  else if (a === 'timelapse') el.dataset.mode === 'replay' ? playTimelapse() : finishTimelapse();
+  else if (a === 'wall') {
+    const open = $('wall').classList.toggle('collapsed') === false;
+    el.textContent = open ? '접기' : '전체 펼쳐 보기';
+  }
+  else if (a === 'lb-close') closeLightbox();
+  else if (a === 'lb-prev') openLightbox(lbIndex - 1);
+  else if (a === 'lb-next') openLightbox(lbIndex + 1);
+});
+
+document.addEventListener('keydown', (e) => {
+  if ($('lb').hidden) return;
+  if (e.key === 'Escape') closeLightbox();
+  else if (e.key === 'ArrowLeft') openLightbox(lbIndex - 1);
+  else if (e.key === 'ArrowRight') openLightbox(lbIndex + 1);
+});
+
+let touchX = null;
+$('lb').addEventListener('touchstart', (e) => { touchX = e.touches[0].clientX; }, { passive: true });
+$('lb').addEventListener('touchend', (e) => {
+  if (touchX === null) return;
+  const dx = e.changedTouches[0].clientX - touchX;
+  if (Math.abs(dx) > 40) openLightbox(lbIndex + (dx < 0 ? 1 : -1));
+  touchX = null;
+});
+
+document.addEventListener('input', (e) => {
+  if (e.target.matches('.compare input')) {
+    e.target.closest('.compare').style.setProperty('--pos', `${e.target.value}%`);
+  }
+});
+
+document.addEventListener('change', (e) => {
+  if (e.target.name === 'attend') e.target.form.count.disabled = e.target.value !== '참석';
+});
+
+document.addEventListener('submit', (e) => {
+  if (e.target.id !== 'rsvpForm') return;
+  e.preventDefault();
+  const fd = new FormData(e.target);
+  const body = [
+    `[${INVITE.baby.name} 돌잔치 참석 여부]`,
+    `성함: ${fd.get('name')}`,
+    fd.get('attend') === '참석' ? `참석 · ${fd.get('count')}명` : '불참 (마음만 보낼게요)',
+  ].join('\n');
+  location.href = `sms:${digits(INVITE.rsvp.to)}?&body=${encodeURIComponent(body)}`;
+});
+
+/* ---------- Boot ---------- */
+render();
+hasUploadedWall = initUploadedWall();
+initCover();
+initDiary();
+initPhotos();
+const items = document.querySelectorAll('.reveal');
+if ('IntersectionObserver' in window) {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((en) => {
+      if (en.isIntersecting) { en.target.classList.add('on'); io.unobserve(en.target); }
+    });
+  }, { threshold: 0.15 });
+  items.forEach((el) => io.observe(el));
+} else {
+  items.forEach((el) => el.classList.add('on'));
+}
+</script>
+</body>
+</html>
